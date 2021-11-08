@@ -122,7 +122,6 @@ class LoginController extends Controller
         if($count == 0)
         {
             $student_id = User::createUser(self::userHandle($registeredRequest));
-
                 return  $student_id ?
                     json_success('注册成功!',$student_id,200  ) :
                     json_success('注册失败!',null,100  ) ;
@@ -198,9 +197,7 @@ class LoginController extends Controller
     {
         $registeredInfo = $request->except('password_confirmation');
         $registeredInfo['password'] = bcrypt($registeredInfo['password']);
-        $registeredInfo['name'] = $registeredInfo['name'];
-        $registeredInfo['phone'] = $registeredInfo['phone'];
-        $registeredInfo['email'] = $registeredInfo['email'];
+
         $registeredInfo['account'] = $registeredInfo['account'];
         return $registeredInfo;
     }
