@@ -46,6 +46,18 @@ Route::prefix('file')->group(function () {
     Route::post('photo', 'File\FileController@upload'); //学生负责人个人信息查看  1
 });
 
+Route::prefix('friend')->group(function () {
+    Route::get('all', 'Front\FrontController@dynamicAll'); // 动态展示
+    Route::get('other', 'Front\FrontController@otherDynamic'); //别人的朋友圈
+    Route::post('creply', 'Front\FrontController@commentReply'); //返回朋友圈的评论
+    Route::post('psend', 'Front\FrontController@sendDynamic'); //发布朋友圈
+    Route::post('praise', 'Front\FrontController@praise'); //点赞
+    Route::get('getpraise', 'Front\FrontController@getPraise'); //得到点赞的人
+    Route::post('creplys', 'Front\FrontController@commentReplys'); //动态评论
+    Route::post('hsend', 'Front\FrontController@helpSend'); //发表求助
+    Route::post('hreply', 'Front\FrontController@helpReply'); // 求助评论
+    Route::post('hreplys', 'Front\FrontController@helpReplys'); //回复求助回复的回复
 
+});
 
 
