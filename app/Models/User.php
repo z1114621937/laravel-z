@@ -14,10 +14,10 @@ class User extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authen
     //
     use Notifiable;
 
-    public $table = 'superadmin';
+    public $table = 'login';
     protected $remeberTokenName = NULL;
     protected $guarded = [];
-    protected $fillable = [ 'password', 'name', 'phone','email','account'];
+    protected $fillable = [ 'password','account'];
     protected $hidden = [
         'password',
     ];
@@ -44,6 +44,7 @@ class User extends \Illuminate\Foundation\Auth\User implements JWTSubject,Authen
         try {
             $student_id = self::create($array)->id;
             //echo "student_id:" . $student_id;
+
             return $student_id ?
                 $student_id :
                 false;
