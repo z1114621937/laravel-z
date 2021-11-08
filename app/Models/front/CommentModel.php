@@ -41,7 +41,7 @@ class CommentModel extends Model
      */
    public static function yjx_allDynamic(){
        try {
-           $res=self::select('comment_name','comment_article','userid','comment_state','comment_chart')
+           $res=self::select('id','comment_name','comment_article','userid','comment_state','comment_chart')
                ->where('state',1)
                ->get();
            return $res?
@@ -59,7 +59,7 @@ class CommentModel extends Model
      */
     public static function yjx_otherDynamic($request){
         try {
-            $res=self::select('comment_article','comment_chart')
+            $res=self::select('comment_article','comment_state','comment_chart')
                 ->where('state',1)
                 ->where('userid',$request['userid'])->get();
             return $res?
