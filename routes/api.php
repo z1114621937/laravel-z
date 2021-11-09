@@ -46,6 +46,7 @@ Route::prefix('file')->group(function () {
     Route::post('photo', 'File\FileController@upload'); //学生负责人个人信息查看  1
 });
 
+
 Route::prefix('friend')->group(function () {
     Route::get('all', 'Front\FrontController@dynamicAll'); // 动态展示
     Route::get('other', 'Front\FrontController@otherDynamic'); //别人的朋友圈
@@ -60,5 +61,33 @@ Route::prefix('friend')->group(function () {
 
 });
  //yjx
+
+/**
+ * 后台管理操作
+ */
+Route::prefix('back')->group(function (){
+    Route::post('userlook','Back\BackController@user_look');   //查看user信息数据
+    Route::post('alllook','Back\BackController@all_look');   //根据user查看个人发布数据
+    Route::post('commentdelete','Back\BackController@comment_delete');   //根据user时间删除发布动态的数据
+    Route::post('helpdelete','Back\BackController@help_delete');   //根据user时间删除发布的求助数据
+    Route::post('allstatelook','Back\BackController@all_statelook');   //根据数据类型和时间查看个人发布数据
+    Route::post('userclose','Back\BackController@user_close');   //禁用user
+    Route::post('useropen','Back\BackController@user_open');   //开放user
+    Route::post('looktime','Back\BackController@look_time');   //根据userid和state查询时间
+    Route::post('commentalldongtai','Back\BackController@comment_alldongtai');   //查询所有动态
+    Route::post('helpallqiuzhu','Back\BackController@help_allqiuzhu');   //查询所有求助
+    Route::post('commentnamedongtai','Back\BackController@comment_namedongtai');   //根据姓名查询动态
+    Route::post('helpnameqiuzhu','Back\BackController@help_nameqiuzhu');   //根据姓名查询动态求助
+    Route::post('commentdeletedongtai','Back\BackController@comment_deletedongtai');   //根据user时间与删除发布的动态
+    Route::post('helpdeleteqiuzhu','Back\BackController@help_deleteqiuzhu');   //根据user时间与删除发布的求助
+});//--wzh
+/**
+ * 钉钉登录获取信息相关操作
+ */
+Route::prefix('dingding')->group(function (){
+    Route::get('token','Dingding\GetController@getToken');  //获取token
+    Route::get('form','Dingding\GetController@getform');    // 获取基本的信息并存入数据库
+    Route::get('photo','Dingding\GetController@gettutu');   //获取图片并存入数据库
+});//--wzh
 
 
